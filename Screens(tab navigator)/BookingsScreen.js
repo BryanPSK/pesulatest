@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { Text, View , Button} from 'react-native';
+import { Text, View , Button, StyleSheet, TouchableOpacity} from 'react-native';
+import { useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import Header from '../Shared/Header';
+import CreditsCount from './CreditsScreen';
 
 
 
@@ -38,13 +40,27 @@ function TamarindHallScreen (){
   );
 }
 function CreditsScreen() {
+  const[count,setCount]=useState(0)
+  function buttonPressed(){
+    setCount(count+10)
+  }
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Top up credits</Text>
+    <View style={styles.container}>
+      <Text style={{fontSize:60}}> {count} </Text>
+      <Button title="10 Credits" onPress={buttonPressed}></Button>
+
+
     </View>
   );
 }
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  
+});
 
 /*const screens = {
   SaracaHallScreen:{
@@ -92,7 +108,6 @@ const Stack = createStackNavigator(/*screens, {
       
     );
     }
-
 
 
  /* options = {{
