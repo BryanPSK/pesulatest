@@ -14,7 +14,7 @@ import FontAwesome from "react-native-vector-icons/FontAwesome"; //for navigatio
 
 
 const Tab = createBottomTabNavigator();   //bottom navigation bar
-
+//hi
 
 
 
