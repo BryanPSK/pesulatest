@@ -1,18 +1,13 @@
+import * as React from 'react';
+import { View, Button, Text, Animated, StyleSheet,Image,TextInput,TouchableOpacity,  } from 'react-native';
+import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TextInput,
-  Button,
-  TouchableOpacity,
-} from "react-native";
+
 
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';  
-import 'react-native-gesture-handler';
+
 import HomeScreen from './Screens/HomeScreen';    //import from screens folder
 import BookingsScreen from './Screens/BookingsScreen'; //import from screens folder
 import SettingsScreen from './Screens/SettingsScreen'; //import from screens folder
@@ -20,11 +15,34 @@ import CreditsScreen from './Screens/CreditsScreen'; //import from screens folde
 import FontAwesome from "react-native-vector-icons/FontAwesome"; //for navigation bar icons
 
 const Tab = createBottomTabNavigator();   //bottom navigation bar
+const Stack = createStackNavigator();
 
-export default function Login({navigation}) {
+export default function MainStack() {
+  return (
+    <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="LoginScreen"
+        component={LoginScreen}
+        options={{ headerShown: false }}
+      />
+     <Stack.Screen
+        name="AfterLogin"
+        component={AfterLogin}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+}
+
+function LoginScreen({ navigation }) { //FIRST LOGIN SCREEN
   return (
     <View style={styles.container}>
  
@@ -34,7 +52,7 @@ export default function Login({navigation}) {
           style={styles.TextInput}
           placeholder="Email."
           placeholderTextColor="#003f5c"
-          onChangeText={(email) => setEmail(email)}
+          onChangeText={(email) => setEmail(email)} //SET EMAIL
         />
       </View>
  
@@ -44,22 +62,20 @@ export default function Login({navigation}) {
           placeholder="Password."
           placeholderTextColor="#003f5c"
           secureTextEntry={true}
-          onChangeText={(password) => setPassword(password)}
+          onChangeText={(password) => setPassword(password)} //SET PASSWORD
         />
       </View>
  
-      <TouchableOpacity>
-        <Text style={styles.forgot_button}>Forgot Password?</Text>
+      <TouchableOpacity> 
+        <Text style={styles.forgot_button}>Forgot Password?</Text> 
       </TouchableOpacity>
  
-      <TouchableOpacity style={styles.loginBtn}>
+      <TouchableOpacity style={styles.loginBtn}> 
         <Text style={styles.loginText}>LOGIN </Text> 
-        <Button title='LOGIN' onPress={() => navigation.navigate('AfterLogin')} />
-
-      </TouchableOpacity>
+        <Button title='LOGIN'  onPress={() => navigation.navigate('AfterLogin')} /> 
+      </TouchableOpacity> 
     </View>
-
-  ); 
+  );
 }
  
 const styles = StyleSheet.create({
@@ -108,11 +124,8 @@ const styles = StyleSheet.create({
 });
 
 
-
-function AfterLogin() {
-
+function AfterLogin() { //WHAT YOU SEE AFTER LOGIN
   return (
-    <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -132,11 +145,6 @@ function AfterLogin() {
               iconName = 'credit-card';  
             }                                //iconName = focused? 'credit-card':'credit-card-alt'; // '1':'2' icon change from 1 to 2 on click.
             
-            else if (route.name === 'Login') {
-                iconName = 'credit-card'; 
-            
-            }
-
             // You can return any component that you like here!
             return <FontAwesome name={iconName} size={size} color={color} />;
           },
@@ -152,19 +160,10 @@ function AfterLogin() {
         <Tab.Screen name="Bookings" component={BookingsScreen} options = {{headerShown : false}}/>
         <Tab.Screen name="Credits" component={CreditsScreen} options = {{headerShown : false}}/>
         <Tab.Screen name="Settings" component={SettingsScreen} options = {{headerShown : false}}/>
-        <Tab.Screen name="Login" component={LoginPage} options = {{headerShown : false}}/>
 
       </Tab.Navigator>
-    </NavigationContainer>
 
   );
 }
 
-function LoginStack(){
-  return(
-    <Stack.Navigator>
-      <Stack.Screen name ='Login' component ={Login} options = {{headerShown : false}}/>
-      <Stack.Screen name ='AfterLogin' component ={AfterLogin} />
-    </Stack.Navigator>
-  );
-}
+
