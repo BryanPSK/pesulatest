@@ -1,14 +1,17 @@
 import * as React from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, StyleSheet} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';  
 import 'react-native-gesture-handler';
 import HomeScreen from './Screens(tab navigator)/HomeScreen';    //import from screens folder
 import BookingsScreen from './Screens(tab navigator)/BookingsScreen'; //import from screens folder
 import SettingsScreen from './Screens(tab navigator)/SettingsScreen'; //import from screens folder
-//import CreditsScreen from './Screens(tab navigator)/CreditsScreen'; //import from screens folder
+import CreditsScreen from './Screens(tab navigator)/CreditsScreen'; //import from screens folder
 import FontAwesome from "react-native-vector-icons/FontAwesome"; //for navigation bar icons
 import BookingsStack from './Screens(tab navigator)/BookingsScreen';
+import { Appbar } from 'react-native-paper';
+import react from 'react';
+
 
 
 //for beautifying stuff, might look at react native paper
@@ -20,7 +23,11 @@ const Tab = createBottomTabNavigator();   //bottom navigation bar
 
 
 export default function App() {
+  
   return (
+
+
+    
     <NavigationContainer>
 
       <Tab.Navigator
@@ -54,13 +61,17 @@ export default function App() {
 
 
         {/* there needs to be a constant header regardless of tabs. Yet to figure out */}
-        <Tab.Screen name="Home" component={HomeScreen} options = {{headerShown : false}} />
+        
         <Tab.Screen name="Bookings" component={BookingsStack} options = {{headerShown : false}}/>
+        <Tab.Screen name="Credits" component={CreditsScreen} options = {{headerShown : false}}/>
         <Tab.Screen name="Settings" component={SettingsScreen} options = {{headerShown : false}}/>
       </Tab.Navigator>
     </NavigationContainer>
+    
 
   );
-}
+      }
 
-/*        <Tab.Screen name="Credits" component={CreditsScreen} options = {{headerShown : false}}/>*/
+
+
+/*        <Tab.Screen name="Home" component={HomeScreen} options = {{headerShown : false}} />*/

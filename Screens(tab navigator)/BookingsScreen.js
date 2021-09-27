@@ -4,31 +4,44 @@ import { useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
-import Header from '../Shared/Header';
-import CreditsCount from './CreditsScreen';
+import {CreditsScreen, increment  } from './CreditsScreen';
+import { Component } from 'react';
+import { useEffect, useLayoutEffect } from 'react/cjs/react.development';
+
+
+
+
 
 
 
 
 
 function BookingsScreen({ navigation }) {
+
+  
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      
         {/* text here can be beautified */}
         <Text>Which hall?</Text>    
         {/* shows user the available halls and navigates them to the page for availability. Can beautify this as well  */}
         <Button title='SaracaHall' onPress={() => navigation.navigate('SaracaHall')}/>
         <Button title='TamarindHall' onPress={() => navigation.navigate('TamarindHall')}/>
-        <Button title='Credits' onPress={() => navigation.navigate('Credits')}/>
+        
+        
       
       </View>
     );
+  
   }
 
+ 
+
 function SaracaHallScreen (){
+  
   return(
   <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-  <Text> Test </Text>
+  <Text> Test</Text>
   </View>
   );
 }
@@ -39,28 +52,9 @@ function TamarindHallScreen (){
   </View>
   );
 }
-function CreditsScreen() {
-  const[count,setCount]=useState(0)
-  function buttonPressed(){
-    setCount(count+10)
-  }
-  return (
-    <View style={styles.container}>
-      <Text style={{fontSize:60}}> {count} </Text>
-      <Button title="10 Credits" onPress={buttonPressed}></Button>
 
 
-    </View>
-  );
-}
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  
-});
+
 
 /*const screens = {
   SaracaHallScreen:{
@@ -78,35 +72,27 @@ const styles = StyleSheet.create({
 }*/
 
 
-const Stack = createStackNavigator(/*screens, {
-  defaultNavigationOptions:{
-    headerTintColor: '#444',
-  headerstyle: {backgroundcolor: 'eee', height: 60}  }
-}*/)
+const Stack = createStackNavigator()
 
   //stack shows hall --> washing machines available
-  export default function BookingsStack(){
+  export default function BookingsStack() {
+
+//var counter = props.route.params.data;
+
     return(
+      
       <Stack.Navigator>
-        <Stack.Screen name ='Bookings' component ={BookingsScreen}
-        options = {{
-          headerRight: () => (
-            <Button
-              onPress={() => navigation.navigate('Credits')}
-              title="Credits"
-              color="#00cc00"
-            />
-          ),
-        }}
-        />
+        
+        <Stack.Screen name ='Bookings' component ={BookingsScreen} options={{headerRight:() => <Text></Text>}} />
         <Stack.Screen name ='SaracaHall' component ={SaracaHallScreen} />
         <Stack.Screen
         name ='TamarindHall'
         component ={TamarindHallScreen} />
-        <Stack.Screen name ='Credits' component ={CreditsScreen}/>
+        
       </Stack.Navigator>
-      
+    
     );
+    
     }
 
 
@@ -118,4 +104,7 @@ const Stack = createStackNavigator(/*screens, {
         color="#00cc00"
       />
     ),
-  }}*/
+  }}
+  
+  options={{headerRight:()=> (<Text>{DataTransfer}</Text>)}}
+  */
