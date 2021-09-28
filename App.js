@@ -8,6 +8,7 @@ import BookingsScreen from './Screens(tab navigator)/BookingsScreen'; //import f
 import SettingsScreen from './Screens(tab navigator)/SettingsScreen'; //import from screens folder
 import CreditsScreen from './Screens(tab navigator)/CreditsScreen'; //import from screens folder
 import FontAwesome from "react-native-vector-icons/FontAwesome"; //for navigation bar icons
+import BookingsStack from './Screens(tab navigator)/BookingsScreen';
 
 
 //for beautifying stuff, might look at react native paper
@@ -53,7 +54,7 @@ export default function App() {
 
         {/* there needs to be a constant header regardless of tabs. Yet to figure out */}
         <Tab.Screen name="Home" component={HomeScreen} options = {{headerShown : false}} />
-        <Tab.Screen name="Bookings" component={BookingsScreen} options = {{headerShown : false}}/>
+        <Tab.Screen name="Bookings" component={BookingsStack} options = {{headerShown : false}}/>
         <Tab.Screen name="Credits" component={CreditsScreen} options = {{headerShown : false}}/>
         <Tab.Screen name="Settings" component={SettingsScreen} options = {{headerShown : false}}/>
       </Tab.Navigator>

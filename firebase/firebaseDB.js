@@ -1,5 +1,5 @@
 import { firebase } from "@firebase/app";
-import "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 
 
 const firebaseConfig = {
