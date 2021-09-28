@@ -10,10 +10,10 @@ export default function HomeScreen() {
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>Homescreen</Text>
         <Button title = "firestore" onPress={ UpdateFirestore } />
-        <Button title = "checkbookingavailability" onPress={ Readbooking } />
-        <Button title = "bookmachine1" onPress={ checktrue } />
-        <Button title = "forcebookmachine1" onPress={ bookmachine1 } />
-        <Button title = "forceunbookmachine1" onPress={ unbookmachine1 } />
+        <Button title = "checkbookingavailability" onPress={ checkbookingavailability } />
+        <Button title = "bookmachine1" onPress={ bookmachine1 } />
+        <Button title = "forcebookmachine1" onPress={ forcebookmachine1 } />
+        <Button title = "forceunbookmachine1" onPress={ forceunbookmachine1 } />
         {/* <Button title = "consolelog" onPress={ ()=>  } /> */}
       </View>
   );
@@ -31,7 +31,7 @@ export default function HomeScreen() {
     
 
 //hardcoded function to book machine 1.updates the 'isbooked' boolean field in firestore
-function bookmachine1(){
+function forcebookmachine1(){
 firebase.firestore()
   .collection('SaracaHall')
   .doc('Machine1')
@@ -40,9 +40,10 @@ firebase.firestore()
   .set({
     isbooked: true,
   })
+  console.log('machine1 forcebooked')
 }
 //function to unbook machine 1. updates the 'isbooked' boolean field in firestore.
-function unbookmachine1(){
+function forceunbookmachine1(){
   firebase.firestore()
     .collection('SaracaHall')
     .doc('Machine1')
@@ -51,10 +52,11 @@ function unbookmachine1(){
     .set({
       isbooked: false,
     })
+    console.log('machine1 force unbooked')
   }
 
 //Check if machine is booked or not. then carry out action(in this case print statement)
-// function checktrue(){
+// function bookmachine1(){
 //   firebase.firestore()
 //   .collection('SaracaHall')
 //   .doc('Machine1')
@@ -76,7 +78,7 @@ function unbookmachine1(){
 // }
 
 //this function checks the current booking status
-function Readbooking(){
+function checkbookingavailability(){
   firebase.firestore()
   .collection('SaracaHall')
   .doc('Machine1')
@@ -97,7 +99,7 @@ function Readbooking(){
 
 
 //Check if machine is avail. if available, book it.
-  function checktrue(){
+  function bookmachine1(){
     firebase.firestore()
     .collection('SaracaHall')
     .doc('Machine1')
@@ -111,7 +113,7 @@ function Readbooking(){
         //do something
       }
       if(isbooked == false){
-        bookmachine1()
+        forcebookmachine1()
         console.log('machine1 booked successfully')
         //do something
       }
