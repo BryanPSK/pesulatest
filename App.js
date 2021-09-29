@@ -158,7 +158,7 @@ function AfterLogin() { //WHAT YOU SEE AFTER LOGIN
 
         {/* there needs to be a constant header regardless of tabs. Yet to figure out */}
         <Tab.Screen name="Home" component={HomeScreen} options = {{headerShown : false}} />
-        <Tab.Screen name="Bookings" component={BookingsStack} options = {{headerShown : false}}/>
+        <Tab.Screen name="Bookings" component={BookingsScreen} options = {{headerShown : false}}/>
         <Tab.Screen name="Credits" component={CreditsScreen} options = {{headerShown : false}}/>
         <Tab.Screen name="Settings" component={SettingsScreen} options = {{headerShown : false}}/>
 
