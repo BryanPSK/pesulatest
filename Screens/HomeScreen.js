@@ -1,16 +1,9 @@
 import * as React from 'react';
-<<<<<<< HEAD
-import { Text, View } from 'react-native';
-import BookingsScreen from '../Screens(tab navigator)/BookingsScreen'
-import { createStackNavigator } from '@react-navigation/stack';
-import { onChange } from 'react-native-reanimated';
-=======
 import { Text, View, Button, Alert,} from 'react-native';
 import 'firebase/firestore';
 import firebase from '../firebase/firebaseDB';
 
 
->>>>>>> 40bc26487a9e34d98f492223adc0fe80889fbf1a
 
 export default function HomeScreen() {
     return (
@@ -25,9 +18,6 @@ export default function HomeScreen() {
       </View>
   );
   }
-<<<<<<< HEAD
- 
-=======
 
    //this function writes data to firestore 
   function UpdateFirestore(){
@@ -134,4 +124,3 @@ function checkbookingavailability(){
     })
   }
   
->>>>>>> 40bc26487a9e34d98f492223adc0fe80889fbf1a

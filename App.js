@@ -8,18 +8,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';  
 
-<<<<<<< HEAD
-import HomeScreen from './Screens(tab navigator)/HomeScreen';    //import from screens folder
-import BookingsScreen from './Screens(tab navigator)/BookingsScreen'; //import from screens folder
-import SettingsScreen from './Screens(tab navigator)/SettingsScreen'; //import from screens folder
-import CreditsScreen from './Screens(tab navigator)/CreditsScreen'; //import from screens folder
-=======
+
 
 import HomeScreen from './Screens/HomeScreen';    //import from screens folder
+
 import BookingsScreen from './Screens/BookingsScreen'; //import from screens folder
 import SettingsScreen from './Screens/SettingsScreen'; //import from screens folder
 import CreditsScreen from './Screens/CreditsScreen'; //import from screens folder
->>>>>>> 40bc26487a9e34d98f492223adc0fe80889fbf1a
 import FontAwesome from "react-native-vector-icons/FontAwesome"; //for navigation bar icons
 
 const Tab = createBottomTabNavigator();   //bottom navigation bar
@@ -164,15 +159,9 @@ function AfterLogin() { //WHAT YOU SEE AFTER LOGIN
       >
 
         {/* there needs to be a constant header regardless of tabs. Yet to figure out */}
-<<<<<<< HEAD
-        
-        <Tab.Screen name="Bookings" component={BookingsScreen} options = {{headerShown : false}}/>
-        <Tab.Screen name="Credits" component={CreditsScreen} options = {{headerShown : true}}/>
-=======
         <Tab.Screen name="Home" component={HomeScreen} options = {{headerShown : false}} />
         <Tab.Screen name="Bookings" component={BookingsScreen} options = {{headerShown : false}}/>
         <Tab.Screen name="Credits" component={CreditsScreen} options = {{headerShown : false}}/>
->>>>>>> 40bc26487a9e34d98f492223adc0fe80889fbf1a
         <Tab.Screen name="Settings" component={SettingsScreen} options = {{headerShown : false}}/>
 
       </Tab.Navigator>
