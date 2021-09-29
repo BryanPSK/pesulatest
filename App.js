@@ -1,35 +1,131 @@
 import * as React from 'react';
-import { Text, View, Button, StyleSheet} from 'react-native';
+import { View, Button, Text, Animated, StyleSheet,Image,TextInput,TouchableOpacity,  } from 'react-native';
+import { useState } from "react";
+import { StatusBar } from "expo-status-bar";
+
+
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';  
-import 'react-native-gesture-handler';
+
 import HomeScreen from './Screens(tab navigator)/HomeScreen';    //import from screens folder
 import BookingsScreen from './Screens(tab navigator)/BookingsScreen'; //import from screens folder
 import SettingsScreen from './Screens(tab navigator)/SettingsScreen'; //import from screens folder
 import CreditsScreen from './Screens(tab navigator)/CreditsScreen'; //import from screens folder
 import FontAwesome from "react-native-vector-icons/FontAwesome"; //for navigation bar icons
-import BookingsStack from './Screens(tab navigator)/BookingsScreen';
-import { Appbar } from 'react-native-paper';
-import react from 'react';
-
-
-
-//for beautifying stuff, might look at react native paper
-
 
 const Tab = createBottomTabNavigator();   //bottom navigation bar
+const Stack = createStackNavigator();
 
-
-
-
-export default function App() {
-  
+export default function MainStack() {
   return (
-
-
-    
     <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="LoginScreen"
+        component={LoginScreen}
+        options={{ headerShown: false }}
+      />
+     <Stack.Screen
+        name="AfterLogin"
+        component={AfterLogin}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
+function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+}
+
+function LoginScreen({ navigation }) { //FIRST LOGIN SCREEN
+  return (
+    <View style={styles.container}>
+ 
+      <StatusBar style="auto" />
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Email."
+          placeholderTextColor="#003f5c"
+          onChangeText={(email) => setEmail(email)} //SET EMAIL
+        />
+      </View>
+ 
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Password."
+          placeholderTextColor="#003f5c"
+          secureTextEntry={true}
+          onChangeText={(password) => setPassword(password)} //SET PASSWORD
+        />
+      </View>
+ 
+      <TouchableOpacity> 
+        <Text style={styles.forgot_button}>Forgot Password?</Text> 
+      </TouchableOpacity>
+ 
+      <TouchableOpacity /* style={styles.loginBtn} */> 
+        {/* <Text style={styles.loginText}>LOGIN </Text> */} 
+        <Button title='LOGIN'  onPress={() => navigation.navigate('AfterLogin')} /> 
+      </TouchableOpacity> 
+    </View>
+  );
+}
+ 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+ 
+  image: {
+    marginBottom: 40,
+  },
+ 
+  inputView: {
+    backgroundColor: "#FFC0CB",
+    borderRadius: 30,
+    width: "70%",
+    height: 45,
+    marginBottom: 20,
+ 
+    alignItems: "center",
+  },
+ 
+  TextInput: {
+    height: 50,
+    flex: 1,
+    padding: 10,
+    marginLeft: 20,
+  },
+ 
+  forgot_button: {
+    height: 30,
+    marginBottom: 30,
+  },
+ 
+  loginBtn: {
+    width: "80%",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 40,
+    backgroundColor: "#FF1493",
+  },
+});
+
+
+function AfterLogin() { //WHAT YOU SEE AFTER LOGIN
+  return (
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -46,9 +142,9 @@ export default function App() {
               iconName = 'cog';
             }
             else if (route.name === 'Credits') {
-              iconName = 'credit-card';                                  //iconName = focused? 'credit-card':'credit-card-alt'; // '1':'2' icon change from 1 to 2 on click.
-            }
-
+              iconName = 'credit-card';  
+            }                                //iconName = focused? 'credit-card':'credit-card-alt'; // '1':'2' icon change from 1 to 2 on click.
+            
             // You can return any component that you like here!
             return <FontAwesome name={iconName} size={size} color={color} />;
           },
@@ -59,19 +155,15 @@ export default function App() {
         }}
       >
 
-
         {/* there needs to be a constant header regardless of tabs. Yet to figure out */}
         
-        <Tab.Screen name="Bookings" component={BookingsStack} options = {{headerShown : false}}/>
-        <Tab.Screen name="Credits" component={CreditsScreen} options = {{headerShown : false}}/>
+        <Tab.Screen name="Bookings" component={BookingsScreen} options = {{headerShown : false}}/>
+        <Tab.Screen name="Credits" component={CreditsScreen} options = {{headerShown : true}}/>
         <Tab.Screen name="Settings" component={SettingsScreen} options = {{headerShown : false}}/>
+
       </Tab.Navigator>
-    </NavigationContainer>
-    
 
   );
-      }
+}
 
 
-
-/*        <Tab.Screen name="Home" component={HomeScreen} options = {{headerShown : false}} />*/
