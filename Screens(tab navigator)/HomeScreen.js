@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Text, View, Button, Alert,} from 'react-native';
 import 'firebase/firestore';
 import firebase from '../firebase/firebaseDB';
-import { cos } from 'react-native-reanimated';
+
 
 
 export default function HomeScreen() {
@@ -98,7 +98,7 @@ function checkbookingavailability(){
 
 
 
-//Check if machine is avail. if available, book it.
+//Check if machine1 is avail. if available, book it.
   function bookmachine1(){
     firebase.firestore()
     .collection('SaracaHall')
@@ -113,7 +113,10 @@ function checkbookingavailability(){
         //do something
       }
       if(isbooked == false){
+        //check if got money first (shihui) then minus $1
         forcebookmachine1()
+        //add time stamp. if timeout, add refund $1
+        //push user creds into firebase
         console.log('machine1 booked successfully')
         //do something
       }
