@@ -170,7 +170,7 @@ function AfterLogin() { //WHAT YOU SEE AFTER LOGIN
         <Tab.Screen name="Credits" component={CreditsScreen} options = {{headerShown : true}}/>
 =======
         <Tab.Screen name="Home" component={HomeScreen} options = {{headerShown : false}} />
-        <Tab.Screen name="Bookings" component={BookingsStack} options = {{headerShown : false}}/>
+        <Tab.Screen name="Bookings" component={BookingsScreen} options = {{headerShown : false}}/>
         <Tab.Screen name="Credits" component={CreditsScreen} options = {{headerShown : false}}/>
 >>>>>>> 40bc26487a9e34d98f492223adc0fe80889fbf1a
         <Tab.Screen name="Settings" component={SettingsScreen} options = {{headerShown : false}}/>
