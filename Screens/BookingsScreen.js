@@ -6,44 +6,25 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import {CreditsScreen, increment  } from './CreditsScreen';
 import { Component } from 'react';
-
-import { TextInput } from 'react-native-gesture-handler';
+import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
-
-/* const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
-
-const MyComponent = () => (
-  <Card>
-    <Card.Title title="Card Title" subtitle="Card Subtitle" left={LeftContent} />
-    <Card.Content>
-      <Title>Card title</Title>
-      <Paragraph>Card content</Paragraph>
-    </Card.Content>
-    <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
-    <Card.Actions>
-      <Button>Cancel</Button>
-      <Button>Ok</Button>
-    </Card.Actions>
-  </Card>
-);
-
-export default MyComponent; */
+import MyComponent from '../List';
 
 
 
 function BookingsScreen({ navigation }) {
-  const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
+  const LeftContent = props => <Avatar.Icon {...props} icon="washing-machine" />
   
     return (
-      <View /* style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} */>
+      <ScrollView /* style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} */>
+        
       <Card>
-    <Card.Title title="Card Title" subtitle="Card Subtitle" left={LeftContent} />
-    <Card.Content>
-      <Title>Card title</Title>
-      <Paragraph>Card content</Paragraph>
-    </Card.Content>
+    <Card.Title title="Welcome!" subtitle="Please choose the washing machine you want to use!" left={LeftContent} />
     <Card.Cover source={{ uri: 'https://www.bestslogans.com/img/pics/201711_1113_fdehf.jpg' }} />
-    <Card.Actions>
+    <Card.Content>
+    <Paragraph><MyComponent/></Paragraph>
+    </Card.Content>
+{/*     <Card.Actions>
     <Button mode="outlined" onPress={() => navigation.navigate('SaracaHall')}>
     SaracaHall
   </Button>
@@ -51,27 +32,34 @@ function BookingsScreen({ navigation }) {
     TamarindHall
   </Button>
       
-    </Card.Actions>
+    </Card.Actions> */}
   </Card>
+  </ScrollView>
         
-      </View>
+      
     );
   
   }
 
  
 
-function SaracaHallScreen (){
+function SaracaHallScreen ({navigation}){
   
   return(
   <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-  <Text> Test</Text>
+ <Text /* style={{flex: 1, justifyContent:'center',alignItems:'center'}} */> These are the available machines at Saraca Hall </Text>
+  <Button mode="outlined" onPress={() => navigation.navigate('Sophie')}> Sophie </Button> 
+  <Button mode="outlined" onPress={() => navigation.navigate('Bobby')}> Bobby </Button>
+  <Text>  </Text>
   </View>
   );
 }
-function TamarindHallScreen (){
+function TamarindHallScreen ({navigation}){
   return(
   <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <Text> These are the available machines at Tamarind Hall </Text>
+    <Button mode="outlined" onPress={() => navigation.navigate('Zoey')}> Zoey </Button> 
+  <Button mode="outlined" onPress={() => navigation.navigate('Charlie')}> Charlie </Button>
   <Text> Test </Text>
   </View>
   );

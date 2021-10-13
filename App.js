@@ -7,7 +7,7 @@ import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';  
-
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 
 import HomeScreen from './Screens/HomeScreen';    //import from screens folder

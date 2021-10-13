@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Text, View, Button, Alert,} from 'react-native';
 import 'firebase/firestore';
 import firebase from '../firebase/firebaseDB';
-import CreditsScreen from './CreditsScreen';
-
 
 
 
@@ -80,7 +78,7 @@ function forceunbookmachine1(){
 // }
 
 //this function checks the current booking status
-export function checkbookingavailability(){
+function checkbookingavailability(){
   firebase.firestore()
   .collection('SaracaHall')
   .doc('Machine1')
@@ -90,9 +88,7 @@ export function checkbookingavailability(){
   .then( documentSnapshot =>{
     var isbooked=documentSnapshot.get('isbooked')
     console.log(isbooked)
-    const hello = isbooked
-    return (
-      hello)
+    return (isbooked)
   })
    
     ;
@@ -117,7 +113,6 @@ export function checkbookingavailability(){
         //do something
       }
       if(isbooked == false){
-        
         //check if got money first (shihui) then minus $1
         forcebookmachine1()
         //add time stamp. if timeout, add refund $1
