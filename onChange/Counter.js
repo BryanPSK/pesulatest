@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { View,Text,Button,StyleSheet } from 'react-native';
-import Duplicate from './Duplicate';
 function Counter (){
     const[count,setCount]=useState(0)
     console.log(count)
@@ -9,7 +8,7 @@ function Counter (){
    useEffect(() => {
        console.log('y')
        /* const checkcount = count */
-       Duplicate;
+      
       
        
        
@@ -23,7 +22,7 @@ function decrement(){
     setCount(count-10)
 }
 
-  
+
     return (
         <View style = {styles.container}>
           <Button title="+10 Credits"

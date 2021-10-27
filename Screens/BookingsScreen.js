@@ -7,16 +7,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import {CreditsScreen, increment  } from './CreditsScreen';
 import { Component } from 'react';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
-import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+import { Avatar, Button, Card, Title, Paragraph, Modal, Portal } from 'react-native-paper';
 import MyComponent from '../List';
-
 
 
 function BookingsScreen({ navigation }) {
   const LeftContent = props => <Avatar.Icon {...props} icon="washing-machine" />
   
     return (
-      <ScrollView /* style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} */>
+      <ScrollView>
         
       <Card>
     <Card.Title title="Welcome!" subtitle="Please choose the washing machine you want to use!" left={LeftContent} />

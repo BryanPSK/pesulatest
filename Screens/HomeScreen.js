@@ -81,6 +81,7 @@ function forceunbookmachine1(){
 
 //this function checks the current booking status
 export function checkbookingavailability(){
+  return(
   firebase.firestore()
   .collection('SaracaHall')
   .doc('Machine1')
@@ -90,12 +91,8 @@ export function checkbookingavailability(){
   .then( documentSnapshot =>{
     var isbooked=documentSnapshot.get('isbooked')
     console.log(isbooked)
-    const hello = isbooked
-    return (
-      hello)
-  })
-   
-    ;
+  return(isbooked)})
+  )
   }
 
 

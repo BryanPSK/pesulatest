@@ -8,6 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';  
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import {DefaultTheme,Provider as PaperProvider} from 'react-native-paper';
 
 
 import HomeScreen from './Screens/HomeScreen';    //import from screens folder
@@ -20,8 +21,19 @@ import FontAwesome from "react-native-vector-icons/FontAwesome"; //for navigatio
 const Tab = createBottomTabNavigator();   //bottom navigation bar
 const Stack = createStackNavigator();
 
+const customtheme = {
+  ...DefaultTheme,
+  roundness: 2,
+  
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#3498db',
+    accent: '#f1c40f',
+  },
+};
 export default function MainStack() {
   return (
+    <PaperProvider theme={customtheme}>
     <NavigationContainer>
     <Stack.Navigator>
       <Stack.Screen
@@ -36,6 +48,7 @@ export default function MainStack() {
       />
     </Stack.Navigator>
     </NavigationContainer>
+    </PaperProvider>
   );
 }
 

@@ -10,7 +10,7 @@ export default function InputCredits(){
   const[count,setCount]=useState(0)
   
     return(
-<View style={{justifyContent:'space-between'}}> 
+<View > 
 
 <Header 
   leftComponent={{ icon: 'chevron-left', color: '#191970', iconStyle: { color: '#191970',size: 50 } }} //change to a button that navigates to the prev screen?
@@ -60,12 +60,11 @@ export default function InputCredits(){
 <Button onPress={() =>setCount(0)} 
   title="Reset"
   type='outline'
-  containerStyle={{justifyContent:'center',
-  alignItems:'center'
-  }}
+ 
 />
 <Button onPress={() =>alert('Top-up Success!')} //once press confirm, update database?
   title="Confirm"
+  /* type='outline' */
   icon={{
     name: "arrow-right",
     size: 15,
